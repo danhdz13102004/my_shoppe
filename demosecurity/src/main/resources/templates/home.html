@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Welcome to my website</h3>
+                <a>Trang Chủ</a>
+            </div>
+            <div class="col-sm-6">
+                Xin chào <b>
+                <span sec:authentication="principal.username"></span>
+                <form action="#" th:action="@{/logout}" method="POST">
+                    <input type="submit" class="btn btn-info" value="Đăng Xuất">
+                </form>
+            </b>
+            </div>
+            <div class="col-sm-6">
+                <button sec:authorize="hasAnyRole('ADMIN','MANAGER')" class="btn btn-info">Xem</button>
+                <button sec:authorize="hasAnyRole('ADMIN','MANAGER')"  class="btn btn-warning">Chỉnh sửa</button>
+                <button sec:authorize="hasRole('ADMIN')"  class="btn btn-danger">Xóa</button>
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>BẢNG CỬU CHƯƠNG - <span th:text="${number}"></span> </h1>
+<table>
+    <tr th:each="i : ${#numbers.sequence(1,10)}">
+        <td th:text="${number}"></td>
+        <td>x</td>
+        <td th:text="${i}"></td>
+        <td>=</td>
+        <td th:text="${number*i }"></td>
+    </tr>
+</table>
+</body>
+</html>
