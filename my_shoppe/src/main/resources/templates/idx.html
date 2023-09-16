@@ -13,6 +13,7 @@
     <title>Document</title>
     <script src="../static/js/form_dk.js"></script>
     <script src="../static/js/main.js"></script>
+    <script src="../static/js/show.js"></script>
 </head>
 <body>
     <div class="main">
@@ -269,8 +270,8 @@
                                     <i class="home-filter__icon fa-sharp fa-solid fa-chevron-down"></i>
                                 </div>
                                <div class="home-filter__price--menu">
-                                    <span class="home-filter__price-item" onclick="priceHigher()">Giá: Thấp đến cao</span>
-                                    <span class="home-filter__price-item" onclick="priceLower()">Giá: Cao đến thấp</span>
+                                    <span class="home-filter__price-item" onclick="sortPrice('')">Giá: Thấp đến cao</span>
+                                    <span class="home-filter__price-item" onclick="sortPrice(',desc')">Giá: Cao đến thấp</span>
                                </div>
                             </div>
                             <div class="home-filter__page">
@@ -289,15 +290,20 @@
 
                         </div>
                         <div class="home-product">
-                                <div class="grid_row main_row_category">
-                                     <div class="grid_column-2-4">
+                                <div  class="grid_row main_row_category">
+                                    <div th:each="item : ${list}" class="grid_column-2-4">
                                         <div class="home-product-item">
-                                            <div class="home-product-item--img" style="background-image: url(static/access/img/img-1.jpg);">
+<!--                                            <div class="home-product-item&#45;&#45;img" style="background-image: url(static/access/img/img-1.jpg);"></div>-->
+                                            <div class="home-product-item--img" th:style="'background-image: url(' + '/static/access/img/' + ${item.image} + '.jpg' + ');'">
                                             </div>
-                                            <h4 class="home-product-item_name">Tai nghe Gaming chiến game cực đã</h4>
+
+                                            <div class="home-product-item-contain-title">
+                                                <h4 class="home-product-item_name" th:text="${item.name}"></h4>
+                                            </div>
+
                                             <div class="home-product-item_price">
-                                                <span class="home-product-item_price-old">1.200.000đ</span>
-                                                <span class="home-product-item_price-current">999.000đ</span>
+                                                <span class="home-product-item_price-old" th:text="${item.oldpriceShow}"></span>
+                                                <span class="home-product-item_price-current" th:text="${item.newpriceShow} +'đ'"></span>
                                             </div>
                                             <div class="home-product-item_action">
                                                 <span class="home-product-item_like " >
@@ -313,189 +319,25 @@
                                                 </div>
                                                 <span class="home-product-item_sold">88 Đã bán</span>
                                             </div>
-                                                <div class="home-product-item_origin">
-                                                    <span class="home-product-item_brand">Who?</span>
-                                                    <span class="home-product-item_origin-name">Việt Nam</span>
-                                                </div>
-                                                <div class="home-product-item_favorite">
-                                                    <i class="fa-solid fa-check"></i>
-                                                    <span class="home-product-item_favorite-status">Yêu thích</span>
-                                                </div>
-                                                <div class="home-product-item_sale-off">
-                                                    <span class="home-product-item_sale-off-percent">10%</span>
-                                                    <span class="home-product-item_sale-off-lable">GIẢM</span>
-                                                </div>
-                                                <div class="container-btn-click">
+                                            <div class="home-product-item_origin">
+                                                <span class="home-product-item_brand">Who?</span>
+                                                <span class="home-product-item_origin-name">Việt Nam</span>
+                                            </div>
+                                            <div class="home-product-item_favorite">
+                                                <i class="fa-solid fa-check"></i>
+                                                <span class="home-product-item_favorite-status">Yêu thích</span>
+                                            </div>
+                                            <div class="home-product-item_sale-off">
+                                                <span class="home-product-item_sale-off-percent">10%</span>
+                                                <span class="home-product-item_sale-off-lable">GIẢM</span>
+                                            </div>
+                                            <div class="container-btn-click">
 
-                                                    <button class="add-my-wrap" onclick="CreaterCategory(1)">Thêm vào giỏ hàng</button>
-                                                </div>
+                                                <button class="add-my-wrap" onclick="CreaterCategory(1)">Thêm vào giỏ hàng</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="grid_column-2-4">
-                                        <div class="home-product-item">
-                                            <div class="home-product-item--img" style="background-image: url(https://down-vn.img.susercontent.com/file/432e0a7d1f78ddb2e02400d782a9fe3f_tn);">
-                                            </div>
-                                            <h4 class="home-product-item_name">Tai nghe Gaming chiến game cực đã</h4>
-                                            <div class="home-product-item_price">
-                                                <span class="home-product-item_price-old">1.200.000đ</span>
-                                                <span class="home-product-item_price-current">999.000đ</span>
-                                            </div>
-                                            <div class="home-product-item_action">
-                                                <span class="home-product-item_like " >
-                                                    <i class="home-product-item_like-empty fa-regular fa-heart"></i>
-                                                    <i class="home-product-item_like-fill fa-solid fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item_rating">
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="fa-regular fa-star"></i>
-                                                    <i class="fa-regular fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item_sold">88 Đã bán</span>
-                                            </div>
-                                                <div class="home-product-item_origin">
-                                                    <span class="home-product-item_brand">Who?</span>
-                                                    <span class="home-product-item_origin-name">Việt Nam</span>
-                                                </div>
-                                                <div class="home-product-item_favorite">
-                                                    <i class="fa-solid fa-check"></i>
-                                                    <span class="home-product-item_favorite-status">Yêu thích</span>
-                                                </div>
-                                                <div class="home-product-item_sale-off">
-                                                    <span class="home-product-item_sale-off-percent">10%</span>
-                                                    <span class="home-product-item_sale-off-lable">GIẢM</span>
-                                                </div>
-                                                <div class="container-btn-click">
 
-                                                    <button class="add-my-wrap" onclick="CreaterCategory(2)">Thêm vào giỏ hàng</button>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid_column-2-4">
-                                        <div class="home-product-item">
-                                            <div class="home-product-item--img" style="background-image: url(https://down-vn.img.susercontent.com/file/432e0a7d1f78ddb2e02400d782a9fe3f_tn);">
-                                            </div>
-                                            <h4 class="home-product-item_name">Tai nghe Gaming chiến game cực đã</h4>
-                                            <div class="home-product-item_price">
-                                                <span class="home-product-item_price-old">1.200.000đ</span>
-                                                <span class="home-product-item_price-current">999.000đ</span>
-                                            </div>
-                                            <div class="home-product-item_action">
-                                                <span class="home-product-item_like " >
-                                                    <i class="home-product-item_like-empty fa-regular fa-heart"></i>
-                                                    <i class="home-product-item_like-fill fa-solid fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item_rating">
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="fa-regular fa-star"></i>
-                                                    <i class="fa-regular fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item_sold">88 Đã bán</span>
-                                            </div>
-                                                <div class="home-product-item_origin">
-                                                    <span class="home-product-item_brand">Who?</span>
-                                                    <span class="home-product-item_origin-name">Việt Nam</span>
-                                                </div>
-                                                <div class="home-product-item_favorite">
-                                                    <i class="fa-solid fa-check"></i>
-                                                    <span class="home-product-item_favorite-status">Yêu thích</span>
-                                                </div>
-                                                <div class="home-product-item_sale-off">
-                                                    <span class="home-product-item_sale-off-percent">10%</span>
-                                                    <span class="home-product-item_sale-off-lable">GIẢM</span>
-                                                </div>
-                                                <div class="container-btn-click">
-
-                                                    <button class="add-my-wrap" onclick="CreaterCategory(3)">Thêm vào giỏ hàng</button>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid_column-2-4">
-                                        <div class="home-product-item">
-                                            <div class="home-product-item--img" style="background-image: url(https://down-vn.img.susercontent.com/file/432e0a7d1f78ddb2e02400d782a9fe3f_tn);">
-                                            </div>
-                                            <h4 class="home-product-item_name">Tai nghe Gaming chiến game cực đã</h4>
-                                            <div class="home-product-item_price">
-                                                <span class="home-product-item_price-old">1.200.000đ</span>
-                                                <span class="home-product-item_price-current">999.000đ</span>
-                                            </div>
-                                            <div class="home-product-item_action">
-                                                <span class="home-product-item_like " >
-                                                    <i class="home-product-item_like-empty fa-regular fa-heart"></i>
-                                                    <i class="home-product-item_like-fill fa-solid fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item_rating">
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="fa-regular fa-star"></i>
-                                                    <i class="fa-regular fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item_sold">88 Đã bán</span>
-                                            </div>
-                                                <div class="home-product-item_origin">
-                                                    <span class="home-product-item_brand">Who?</span>
-                                                    <span class="home-product-item_origin-name">Việt Nam</span>
-                                                </div>
-                                                <div class="home-product-item_favorite">
-                                                    <i class="fa-solid fa-check"></i>
-                                                    <span class="home-product-item_favorite-status">Yêu thích</span>
-                                                </div>
-                                                <div class="home-product-item_sale-off">
-                                                    <span class="home-product-item_sale-off-percent">10%</span>
-                                                    <span class="home-product-item_sale-off-lable">GIẢM</span>
-                                                </div>
-                                                <div class="container-btn-click">
-
-                                                    <button class="add-my-wrap" onclick="CreaterCategory(4)">Thêm vào giỏ hàng</button>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid_column-2-4">
-                                        <div class="home-product-item">
-                                            <div class="home-product-item--img" style="background-image: url(https://down-vn.img.susercontent.com/file/432e0a7d1f78ddb2e02400d782a9fe3f_tn);">
-                                            </div>
-                                            <h4 class="home-product-item_name">Tai nghe Gaming chiến game cực đã</h4>
-                                            <div class="home-product-item_price">
-                                                <span class="home-product-item_price-old">1.200.000đ</span>
-                                                <span class="home-product-item_price-current">999.000đ</span>
-                                            </div>
-                                            <div class="home-product-item_action">
-                                                <span class="home-product-item_like " >
-                                                    <i class="home-product-item_like-empty fa-regular fa-heart"></i>
-                                                    <i class="home-product-item_like-fill fa-solid fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item_rating">
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="home-product-item_rated fa-sharp fa-solid fa-star"></i>
-                                                    <i class="fa-regular fa-star"></i>
-                                                    <i class="fa-regular fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item_sold">88 Đã bán</span>
-                                            </div>
-                                                <div class="home-product-item_origin">
-                                                    <span class="home-product-item_brand">Who?</span>
-                                                    <span class="home-product-item_origin-name">Việt Nam</span>
-                                                </div>
-                                                <div class="home-product-item_favorite">
-                                                    <i class="fa-solid fa-check"></i>
-                                                    <span class="home-product-item_favorite-status">Yêu thích</span>
-                                                </div>
-                                                <div class="home-product-item_sale-off">
-                                                    <span class="home-product-item_sale-off-percent">10%</span>
-                                                    <span class="home-product-item_sale-off-lable">GIẢM</span>
-                                                </div>
-                                                <div class="container-btn-click">
-
-                                                    <button class="add-my-wrap" onclick="CreaterCategory(5)">Thêm vào giỏ hàng</button>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    
                                 </div>
                         </div>
                         <ul class="pagination">
@@ -518,27 +360,27 @@
                                 <a href="" class="pagination-item__link">
                                     3
                                 </a>
-                            </li>  
+                            </li>
                             <li class="pagination-item">
                                 <a href="" class="pagination-item__link">
                                     4
                                 </a>
-                            </li>   
+                            </li>
                             <li class="pagination-item">
                                 <a href="" class="pagination-item__link">
                                     5
                                 </a>
-                            </li> 
+                            </li>
                             <li class="pagination-item">
                                 <a href="" class="pagination-item__link">
                                     ...
                                 </a>
-                            </li>  
+                            </li>
                             <li class="pagination-item">
                                 <a href="" class="pagination-item__link">
                                     14
                                 </a>
-                            </li>  
+                            </li>
 
 
                             <li class="pagination-item pagination-item-icon">
@@ -549,7 +391,7 @@
 
                         </ul>
                     </div>
-                
+
                 </div>
             </div>
         </div>
@@ -585,10 +427,10 @@
                             <li class="footer__heading-item">
                                 <i class="footer__heading-icon fa-brands fa-facebook"></i>
                                 Facebook</li>
-                            <li class="footer__heading-item"> 
+                            <li class="footer__heading-item">
                                 <i class="footer__heading-icon fa-brands fa-instagram"></i>
                                 Instagram</li>
-                            <li class="footer__heading-item"> 
+                            <li class="footer__heading-item">
                                 <i class="footer__heading-icon fa-brands fa-linkedin"></i>
                                 LinkedIn</li>
                         </ul>

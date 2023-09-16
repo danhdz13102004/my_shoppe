@@ -1027,7 +1027,6 @@
     margin-bottom: 6px;
     line-height: 24px; /* Thiết lập chiều cao dòng (tùy chỉnh dựa vào font-size và padding) */
     max-height: 48px; /* Giới hạn chiều cao của phần tử (2 hàng x 24px) */
-    overflow: hidden; /* Ẩn nội dung vượt quá chiều cao đã thiết lập */
 }
 .home-product-item_price {
     display: flex;
@@ -1345,4 +1344,11 @@ i.home-product-item_like-fill {
 .left-aligned-input {
     text-indent: 65px; /* Điều chỉnh giá trị này để đẩy chữ về bên trái */
     direction: rtl; /* Đảm bảo văn bản bên trong input được hiển thị từ trái sang phải */
+}
+.home-product-item-contain-title {
+    margin-bottom: 8px;
+    height: 56px;
+    overflow: hidden;
+    /*white-space: nowrap;*/
+    text-overflow: ellipsis;
 }

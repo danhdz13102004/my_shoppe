@@ -1,5 +1,6 @@
 package com.example.my_shoppe.service;
 
+import com.example.my_shoppe.dao.CategoryRepository;
 import com.example.my_shoppe.dao.RoleRepository;
 import com.example.my_shoppe.dao.UserRepository;
 import com.example.my_shoppe.entity.Role;
@@ -21,10 +22,13 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
     private RoleRepository roleRepository;
+
+    private CategoryRepository categoryRepository;
     @Autowired
-    public UserServiceImpl(UserRepository userRepository,RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository,RoleRepository roleRepository,CategoryRepository categoryRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.categoryRepository = categoryRepository;
     }
 
 
